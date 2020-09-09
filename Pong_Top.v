@@ -82,7 +82,7 @@ module Pong_Top (
     Debounce_Switch Switch_4_Inst (
         .i_Clk                  (i_Clk),
         .i_Switch               (i_Switch_4),
-        .o_Switch               (w_Swtich_4)
+        .o_Switch               (w_Switch_4)
     );
 
     Pong #(
