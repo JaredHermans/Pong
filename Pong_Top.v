@@ -103,7 +103,7 @@ module Pong_Top (
         .o_HSync                (w_HSync_Pong),
         .o_VSync                (w_VSync_Pong),
         .o_Red_Video            (w_Red_Video_Pong),
-        .o_Grn_Video            (W_Grn_Video_Pong),
+        .o_Grn_Video            (w_Grn_Video_Pong),
         .o_Blu_Video            (w_Blu_Video_Pong)
     );
     VGA_Sync_Porch #(
@@ -116,7 +116,7 @@ module Pong_Top (
     VGA_Sync_Porch_Inst (
         .i_Clk                  (i_Clk),
         .i_HSync                (w_HSync_Pong),
-        .i_VSync                (W_VSync_Pong),
+        .i_VSync                (w_VSync_Pong),
         .i_Red_Video            (w_Red_Video_Pong),
         .i_Grn_Video            (w_Grn_Video_Pong),
         .i_Blu_Video            (w_Blu_Video_Pong),
