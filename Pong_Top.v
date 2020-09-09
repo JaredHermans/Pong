@@ -19,7 +19,7 @@ module Pong_Top (
     output      o_VGA_Grn_2,
     output      o_VGA_Blu_0,
     output      o_VGA_Blu_1,
-    output      o_VGA_Blu_2,
+    output      o_VGA_Blu_2
 );
 
     // VGA Constants to set Frame Size
@@ -37,7 +37,8 @@ module Pong_Top (
     // 25,000,000 / 115,200 = 217
     UART_RX #(
         .CLKS_PER_BIT           (217))
-    Inst (
+    UART_RX_Inst (
+        .i_Rst_L                (),
         .i_Clk                  (i_Clk),
         .i_RX_Serial            (i_UART_RX),
         .o_RX_DV                (w_RX_DV),
@@ -51,7 +52,7 @@ module Pong_Top (
         .ACTIVE_COLS            (c_ACTIVE_COLS),
         .ACTIVE_ROWS            (c_ACTIVE_ROWS)
     )
-    Inst (
+    VGA_Sync_Pulses_Inst (
         .i_Clk                  (i_Clk),
         .o_HSync                (w_HSync_VGA),
         .o_VSync                (w_VSync_VGA),
@@ -90,10 +91,32 @@ module Pong_Top (
         .c_ACTIVE_COLS          (c_ACTIVE_COLS),
         .c_ACTIVE_ROWS          (c_ACTIVE_ROWS)
     )
-    Inst (
+    Pong_Inst (
+        .i_Clk                  (i_Clk),
+        .i_HSync                (w_HSync_VGA),
+        .i_VSync                (w_VSync_VGA),
+        .i_Game_Start           (w_RX_DV),
+        .i_Paddle_Up_P1         (w_Switch_1),
+        .i_Paddle_Dn_P1         (w_Switch_2),
+        .i_Paddle_Up_P2         (w_Switch_3),
+        .i_Paddle_Dn_P2         (w_Switch_4),
+        .o_HSync                (w_HSync_Pong),
+        .o_VSync                (w_VSync_Pong),
+        .o_Red_Video            (w_Red_Video_Pong),
+        .o_Grn_Video            (W_Grn_Video_Pong),
+        .o_Blu_Video            (w_Blu_Video_Pong)
+    );
+    VGA_Sync_Porch #(
+        .VIDEO_WIDTH            (c_VIDEO_WIDTH),
+        .TOTAL_COLS             (c_TOTAL_COLS),
+        .TOTAL_ROWS             (c_TOTAL_ROWS),
+        .ACTIVE_COLS            (c_ACTIVE_COLS),
+        .ACTIVE_ROWS            (c_ACTIVE_ROWS)
+    )
+    VGA_Sync_Porch_Inst (
         .i_Clk                  (i_Clk),
         .i_HSync                (w_HSync_Pong),
-        .i_VSync                (w_VSync_Pong),
+        .i_VSync                (W_VSync_Pong),
         .i_Red_Video            (w_Red_Video_Pong),
         .i_Grn_Video            (w_Grn_Video_Pong),
         .i_Blu_Video            (w_Blu_Video_Pong),

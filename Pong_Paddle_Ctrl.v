@@ -17,7 +17,7 @@ module Pong_Paddle_Ctrl #(
     // every 50 milliseconds that the button is held down
     parameter           c_PADDLE_SPEED      = 1250000;
 
-    reg         [31:0]  r_PADDLE_Count      = 0;
+    reg         [31:0]  r_Paddle_Count      = 0;
 
     wire                w_Paddle_Count_En;
 
@@ -36,7 +36,7 @@ module Pong_Paddle_Ctrl #(
         // Update the paddle ocation slowyly. Only allowed when the 
         // Paddle Count reaches its limit. don't update if paddle is
         // already at the top of the screen
-        if (i_Paddle_Up == 1'b1 && r_Paddle_Count == c_Paddle_Speed && o_Paddle_Y !== 0)
+        if (i_Paddle_Up == 1'b1 && r_Paddle_Count == c_PADDLE_SPEED && o_Paddle_Y !== 0)
             o_Paddle_Y <= o_Paddle_Y - 1;
         else if ( i_Paddle_Dn == 1'b1 && r_Paddle_Count == c_PADDLE_SPEED && o_Paddle_Y !== c_GAME_HEIGHT-c_PADDLE_HEIGHT-1)
             o_Paddle_Y <= o_Paddle_Y + 1;
