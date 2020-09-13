@@ -3,10 +3,10 @@ module Pong_Top (
     input       i_UART_RX,      // UART RX Data
 
     // Push Buttons
-    input       i_Switch_1,
-    input       i_Switch_2,
-    input       i_Switch_3,
-    input       i_Switch_4,
+    input       io_PMOD_1,
+    input       io_PMOD_2,
+    input       io_PMOD_3,
+    input       io_PMOD_4,
 
     //VGA
     output      o_VGA_HSync,
@@ -44,7 +44,7 @@ module Pong_Top (
         .o_RX_DV                (w_RX_DV),
         .o_RX_Byte              ()
     );
-
+    
     // Generates Sync Pulses to run VGA
     VGA_Sync_Pulses #(
         .TOTAL_COLS             (c_TOTAL_COLS),
@@ -63,25 +63,25 @@ module Pong_Top (
     // Debounce All Switches
     Debounce_Switch Switch_1_Inst (
         .i_Clk                  (i_Clk),
-        .i_Switch               (i_Switch_1),
+        .i_Switch               (io_PMOD_1),
         .o_Switch               (w_Switch_1)
     );
     
     Debounce_Switch Switch_2_Inst (
         .i_Clk                  (i_Clk),
-        .i_Switch               (i_Switch_2),
+        .i_Switch               (io_PMOD_2),
         .o_Switch               (w_Switch_2)
     );
 
     Debounce_Switch Switch_3_Inst (
         .i_Clk                  (i_Clk),
-        .i_Switch               (i_Switch_3),
+        .i_Switch               (io_PMOD_3),
         .o_Switch               (w_Switch_3)
     );
 
     Debounce_Switch Switch_4_Inst (
         .i_Clk                  (i_Clk),
-        .i_Switch               (i_Switch_4),
+        .i_Switch               (io_PMOD_4),
         .o_Switch               (w_Switch_4)
     );
 
