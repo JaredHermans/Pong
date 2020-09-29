@@ -118,7 +118,7 @@ begin
         );
 
 
-    Pong_Pkg_Inst : entity work.Pong_Pkg 
+    Pong_Inst : entity work.Pong 
         generic map(
             g_Video_Width       => c_VIDEO_WIDTH,
             g_Total_Cols        => c_TOTAL_COLS,
