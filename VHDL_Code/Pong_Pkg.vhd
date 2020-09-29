@@ -44,3 +44,16 @@ package Pong_Pkg is
             o_Paddle_Y          : out std_logic_vector(5 downto 0)
         );
     end component Pong_Paddle_Ctrl;
+
+    component Pong_Ball_Ctrl is 
+    port(
+        i_Clk                   : in  std_logic;
+        i_Game_Active           : in  std_logic;
+        i_Col_Count_Div         : in  std_logic_vector(5 downto 0);
+        i_Row_Count_Div         : in  std_logic_vector(5 downto 0);
+
+        o_Draw_Ball             : out std_logic;
+        o_Ball_X                : out std_logic_vector(5 downto 0);
+        o_Ball_Y                : out std_logic_vector(5 downto 0)
+    );
+end component Pong_Ball_Ctrl;
