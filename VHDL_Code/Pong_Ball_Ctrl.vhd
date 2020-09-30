@@ -1,6 +1,6 @@
 -- This module is designed for 640x480 vga display with 25 MHz input clock
 library ieee;
-use ieee.std_logic_1164;
+use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 library work;
 use work.Pong_Pkg.all;

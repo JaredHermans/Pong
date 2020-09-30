@@ -1,7 +1,7 @@
 -- This module is  made for a 640x480 vga with a 25 MHz input clock
 -- Signal o_Paddle_Y represents the index of the top of the paddle
 library ieee;
-use ieee.std_logic_1164;
+use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 library work;

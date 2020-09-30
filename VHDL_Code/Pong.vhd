@@ -6,7 +6,7 @@ use ieee.numeric_std.all;
 library work;
 use work.Pong_Pkg.all;
 
-entity Pong_Top is
+entity Pong is
     generic (
         g_Video_Width       :       integer;
         g_Total_Cols        :       integer;
@@ -34,9 +34,9 @@ entity Pong_Top is
         o_Grn_Video         : out   std_logic_vector(g_Video_Width - 1 downto 0);
         o_Blu_Video         : out   std_logic_vector(g_Video_Width - 1 downto 0)
     );
-end entity Pong_Top;
+end entity Pong;
 
-architecture RTL of Pong_Top is
+architecture RTL of Pong is
 
     type t_SM_Main is (s_Idle, s_Running, s_P1_Wins, s_P2_Wins, s_Cleanup);
     signal r_SM_Main : t_SM_Main := s_Idle;
@@ -197,7 +197,7 @@ begin
                     r_SM_Main <= s_Cleanup;
 
                 when s_P2_Wins =>
-                    if r_P2_Score = c_SCore_Limit then
+                    if r_P2_Score = c_Score_Limit then
                         r_P2_Score <= 0;
                     else
                         r_P2_Score <= r_P2_Score + 1;

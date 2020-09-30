@@ -2,6 +2,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+
 package Pong_Pkg is
     -- Constants
     constant c_Game_Width       : integer := 40;
@@ -56,4 +57,6 @@ package Pong_Pkg is
         o_Ball_X                : out std_logic_vector(5 downto 0);
         o_Ball_Y                : out std_logic_vector(5 downto 0)
     );
-end component Pong_Ball_Ctrl;
+    end component Pong_Ball_Ctrl;
+
+end package Pong_Pkg;

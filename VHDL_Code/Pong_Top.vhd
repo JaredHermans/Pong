@@ -25,6 +25,7 @@ entity Pong_Top is
         o_VGA_Grn_1         : out std_logic;
         o_VGA_Grn_2         : out std_logic;
         o_VGA_Blu_0         : out std_logic;
+        o_VGA_Blu_1         : out std_logic;
         o_VGA_Blu_2         : out std_logic
     );
 end entity Pong_Top;
@@ -73,7 +74,7 @@ begin
         );
 
     
-    VGA_Sync_Pulses_Inst : entity work.VGA_Sync_Pulses 
+    VGA_Sync_Pulses_Inst: entity work.VGA_Sync_Pulses 
         generic map(
             g_TOTAL_COLS        => c_TOTAL_COLS,
             g_TOTAL_ROWS        => c_TOTAL_ROWS,
@@ -89,36 +90,36 @@ begin
         );
 
 
-    Debounce_Switch_1 : entity work.Debounce_Switch
+    Debounce_Switch_1: entity work.Debounce_Switch 
         port map(
             i_Clk               => i_Clk,
             i_Switch            => i_Switch_1,
             o_Switch            => w_Switch_1
         );
 
-    Debounce_Switch_2 : entity work.Debounce_Switch
+    Debounce_Switch_2: entity work.Debounce_Switch 
         port map(
             i_Clk               => i_Clk,
             i_Switch            => i_Switch_2,
             o_Switch            => w_Switch_2
         );
 
-    Debounce_Switch_3 : entity work.Debounce_Switch 
+    Debounce_Switch_3: entity work.Debounce_Switch  
         port map(
             i_Clk               => i_Clk,
             i_Switch            => i_Switch_3,
-            i_Switch            => w_Switch_3
+            o_Switch            => w_Switch_3
         );
 
-    Debounce_Switch_4 : entity work.Debounce_Switch 
+    Debounce_Switch_4: entity work.Debounce_Switch 
         port map(
             i_Clk               => i_Clk,
             i_Switch            => i_Switch_4,
-            i_Switch            => w_Switch_4
+            o_Switch            => w_Switch_4
         );
 
 
-    Pong_Inst : entity work.Pong 
+    Pong_Inst: entity work.Pong 
         generic map(
             g_Video_Width       => c_VIDEO_WIDTH,
             g_Total_Cols        => c_TOTAL_COLS,
@@ -142,7 +143,7 @@ begin
             o_Blu_Video         => w_Blu_Video_Pong
         );
 
-    VGA_Sync_Porch_Inst : entity work.VGA_Sync_porch 
+    VGA_Sync_Porch_Inst: entity work.VGA_Sync_porch 
         generic map(
             g_VIDEO_WIDTH       => c_VIDEO_WIDTH,
             g_TOTAL_COLS        => c_TOTAL_COLS,
